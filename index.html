@@ -1,737 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cotización Técnica – Aponwaonet C.A.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              blue:  '#0062B8',
-              teal:  '#008276',
-              green: '#00A336',
-            }
-          },
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
-            anton:   ['Anton', 'sans-serif'],
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Comercial Modular - Aponwaonet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Poppins y Anton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
         }
-      }
-    }
-  </script>
-  <style>
-    * { font-family: 'Poppins', sans-serif; }
-    .font-anton { font-family: 'Anton', sans-serif; }
-
-    /* Gradient button */
-    .btn-gradient {
-      background: linear-gradient(135deg, #0062B8 0%, #008276 50%, #00A336 100%);
-      transition: opacity 0.3s, transform 0.2s;
-    }
-    .btn-gradient:hover { opacity: 0.92; transform: translateY(-1px); }
-
-    /* Phase tab active */
-    .phase-tab.active {
-      background: linear-gradient(135deg, #0062B8, #008276);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(0,98,184,0.35);
-    }
-    .phase-tab { transition: all 0.3s ease; }
-
-    /* Card hover */
-    .card-hover { transition: transform 0.25s, box-shadow 0.25s; }
-    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,130,118,0.15); }
-
-    /* Total counter animation */
-    @keyframes countUp {
-      from { opacity: 0; transform: scale(0.85); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    .total-animate { animation: countUp 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards; }
-
-    /* Pulse badge */
-    @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0 rgba(0,163,54,0.4); }
-      70%  { box-shadow: 0 0 0 10px rgba(0,163,54,0); }
-      100% { box-shadow: 0 0 0 0 rgba(0,163,54,0); }
-    }
-    .pulse-green { animation: pulse-ring 2s infinite; }
-
-    /* Section divider gradient */
-    .divider-gradient {
-      height: 3px;
-      background: linear-gradient(90deg, #0062B8, #008276, #00A336);
-      border-radius: 9999px;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #008276; border-radius: 3px; }
-
-    /* Phase content transition */
-    .phase-content { transition: opacity 0.35s ease, transform 0.35s ease; }
-    .phase-content.hidden-phase { opacity: 0; transform: translateY(8px); pointer-events: none; position: absolute; }
-    .phase-content.visible-phase { opacity: 1; transform: translateY(0); position: relative; }
-  </style>
+        .font-anton {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.03em;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-gray-800 min-h-screen">
+<body class="antialiased min-h-screen pb-12">
 
-<!-- ═══════════════════════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════════════════════ -->
-<header class="bg-white shadow-md border-b-4 border-brand-teal">
-  <div class="max-w-5xl mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <!-- Logo + Fiscal -->
-    <div class="flex flex-col items-center sm:items-start">
-      <img src="LOGO NUEVO TRANSPARENTE.png" alt="Aponwaonet C.A." class="h-16 object-contain" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'"/>
-      <!-- Fallback si no existe el archivo -->
-      <div id="logo-fallback" class="hidden items-center gap-2">
-        <div class="w-12 h-12 rounded-full btn-gradient flex items-center justify-center">
-          <span class="text-white font-anton text-lg">A</span>
+    <!-- HEADER / ENCABEZADO -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex flex-col items-center sm:items-start">
+                <!-- Se llama al logo exacto respetando mayúsculas y espacios -->
+                <img src="LOGO NUEVO TRANSPARENTE.png" alt="Aponwaonet C.A. Logo" class="h-12 w-auto object-contain">
+                <span class="text-[10px] text-slate-400 mt-1 font-medium tracking-wider">Rif: J500109660 APONWAONET C.A.</span>
+            </div>
+            <div class="text-center sm:text-right">
+                <p class="text-xs font-semibold uppercase tracking-wider text-[#008276]">Propuesta Comercial Modular</p>
+                <p class="text-sm font-bold text-slate-700">Ref: AP032026-Guanare</p>
+            </div>
         </div>
-        <span class="font-anton text-2xl text-brand-blue tracking-wide">APONWAONET</span>
-      </div>
-      <p class="text-xs text-gray-400 mt-1 font-poppins tracking-wider">Rif: J500109660  ·  APONWAONET C.A.</p>
-    </div>
+    </header>
 
-    <!-- Doc info -->
-    <div class="text-center sm:text-right">
-      <p class="text-xs text-gray-400 uppercase tracking-widest font-medium">Propuesta Técnica Comercial</p>
-      <p class="font-anton text-brand-blue text-xl">COT-2025-GPR-001</p>
-      <p class="text-xs text-gray-500 mt-0.5">Fecha: <span id="doc-date"></span></p>
-    </div>
-  </div>
-</header>
+    <main class="max-w-6xl mx-auto px-4 mt-8">
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO BANNER
-═══════════════════════════════════════════════════════════ -->
-<section class="btn-gradient text-white py-10 px-4">
-  <div class="max-w-5xl mx-auto text-center">
-    <p class="text-sm uppercase tracking-widest opacity-80 mb-1">Solución de Continuidad Eléctrica</p>
-    <h1 class="font-anton text-4xl sm:text-5xl leading-tight">SISTEMA DE RESPALDO ELÉCTRICO<br/>CON ALMACENAMIENTO LITIO + SOLAR</h1>
-    <p class="mt-3 text-sm sm:text-base opacity-90 max-w-2xl mx-auto">Diseñado a medida para proteger la operación crítica de su negocio ante los racionamientos del eje llanero.</p>
-  </div>
-</section>
+        <!-- RESUMEN CLIENTE Y CONTEXTO REGIONAL -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs md:col-span-1 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Datos del Cliente</h2>
+                    <p class="text-xl font-bold text-slate-800">Gustavo Rivero</p>
+                    <p class="text-sm text-slate-500 flex items-center mt-1">
+                        <svg class="w-4 h-4 mr-1 text-[#0062B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Guanare, Edo. Portuguesa
+                    </p>
+                </div>
+                <div class="border-t border-slate-100 pt-3 mt-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-[#0062B8]">
+                        Sistema Híbrido Inteligente
+                    </span>
+                </div>
+            </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     DATOS DEL CLIENTE
-═══════════════════════════════════════════════════════════ -->
-<section class="max-w-5xl mx-auto px-4 mt-8">
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col sm:flex-row gap-6 items-start">
-    <!-- Avatar -->
-    <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-brand-blue to-brand-teal flex items-center justify-center shadow-md">
-      <span class="font-anton text-white text-2xl">GR</span>
-    </div>
-    <!-- Info -->
-    <div class="flex-1">
-      <p class="text-xs text-brand-teal uppercase tracking-widest font-semibold mb-0.5">Cliente</p>
-      <h2 class="font-anton text-2xl text-brand-blue">Gustavo Rivero</h2>
-      <div class="flex flex-wrap gap-3 mt-2">
-        <span class="inline-flex items-center gap-1.5 bg-blue-50 text-brand-blue text-xs font-medium px-3 py-1 rounded-full border border-blue-100">
-          📍 Guanare, Estado Portuguesa
-        </span>
-        <span class="inline-flex items-center gap-1.5 bg-teal-50 text-brand-teal text-xs font-medium px-3 py-1 rounded-full border border-teal-100">
-          🏢 Operación Corporativa
-        </span>
-        <span class="inline-flex items-center gap-1.5 bg-green-50 text-brand-green text-xs font-medium px-3 py-1 rounded-full border border-green-100">
-          ✅ Prioridad Alta
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Alerta Regional -->
-  <div class="mt-4 bg-amber-50 border-l-4 border-amber-400 rounded-xl p-5 flex gap-4 items-start shadow-sm">
-    <div class="text-2xl flex-shrink-0">⚠️</div>
-    <div>
-      <p class="font-semibold text-amber-800 text-sm mb-1">Contexto Regional Crítico — Eje Llanero</p>
-      <p class="text-amber-700 text-xs leading-relaxed">
-        La región de Guanare, Estado Portuguesa, enfrenta <strong>racionamientos diurnos prolongados</strong> de hasta 6–8 horas diarias, con <strong>fluctuaciones severas de voltaje</strong> características del eje llanero que comprometen directamente la integridad del hardware corporativo. La ausencia de un sistema de respaldo eléctrico calificado representa un riesgo operativo y financiero inmediato para cualquier negocio que dependa de infraestructura tecnológica activa.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     ANÁLISIS DE CARGA CRÍTICA
-═══════════════════════════════════════════════════════════ -->
-<section class="max-w-5xl mx-auto px-4 mt-10">
-  <div class="divider-gradient mb-6"></div>
-  <p class="text-xs text-brand-teal uppercase tracking-widest font-semibold mb-1">Ingeniería de Detalle</p>
-  <h2 class="font-anton text-3xl text-brand-blue mb-6">ANÁLISIS DE CARGA CRÍTICA</h2>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <!-- Servidor -->
-    <div class="card-hover bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-xl flex-shrink-0">🖥️</div>
-      <div>
-        <p class="text-xs text-gray-400 uppercase tracking-wide">Servidor</p>
-        <p class="font-semibold text-gray-700 text-sm">Picos de arranque / Seguridad</p>
-        <p class="font-anton text-brand-blue text-2xl mt-1">350 W</p>
-      </div>
-    </div>
-    <!-- Laptop -->
-    <div class="card-hover bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center text-xl flex-shrink-0">💻</div>
-      <div>
-        <p class="text-xs text-gray-400 uppercase tracking-wide">Laptop</p>
-        <p class="font-semibold text-gray-700 text-sm">Chicony 19.5V × 11.8A (Máx.)</p>
-        <p class="font-anton text-brand-teal text-2xl mt-1">230.1 W</p>
-      </div>
-    </div>
-    <!-- Monitor -->
-    <div class="card-hover bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-purple-50 flex items-center justify-center text-xl flex-shrink-0">🖱️</div>
-      <div>
-        <p class="text-xs text-gray-400 uppercase tracking-wide">Monitor AOC</p>
-        <p class="font-semibold text-gray-700 text-sm">Consumo nominal</p>
-        <p class="font-anton text-purple-600 text-2xl mt-1">30 W</p>
-      </div>
-    </div>
-    <!-- Router -->
-    <div class="card-hover bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-orange-50 flex items-center justify-center text-xl flex-shrink-0">📡</div>
-      <div>
-        <p class="text-xs text-gray-400 uppercase tracking-wide">Internet (Router/Modem)</p>
-        <p class="font-semibold text-gray-700 text-sm">12V × 2A</p>
-        <p class="font-anton text-orange-500 text-2xl mt-1">24 W</p>
-      </div>
-    </div>
-    <!-- Iluminación -->
-    <div class="card-hover bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-yellow-50 flex items-center justify-center text-xl flex-shrink-0">💡</div>
-      <div>
-        <p class="text-xs text-gray-400 uppercase tracking-wide">Iluminación LED</p>
-        <p class="font-semibold text-gray-700 text-sm">4 puntos de luz</p>
-        <p class="font-anton text-yellow-600 text-2xl mt-1">48 W</p>
-      </div>
-    </div>
-    <!-- TOTAL -->
-    <div class="card-hover bg-gradient-to-br from-brand-blue to-brand-teal rounded-2xl shadow-md p-5 flex items-start gap-4 pulse-green">
-      <div class="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-xl flex-shrink-0">⚡</div>
-      <div>
-        <p class="text-xs text-white/70 uppercase tracking-wide">Total Carga Conectada</p>
-        <p class="font-semibold text-white/90 text-sm">Carga crítica protegida</p>
-        <p class="font-anton text-white text-3xl mt-1">682.1 W</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Barra de distribución -->
-  <div class="mt-6 bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-4">Distribución de Carga (%)</p>
-    <div class="space-y-3">
-      <div>
-        <div class="flex justify-between text-xs text-gray-600 mb-1"><span>🖥️ Servidor</span><span>51.3%</span></div>
-        <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-blue rounded-full" style="width:51.3%"></div></div>
-      </div>
-      <div>
-        <div class="flex justify-between text-xs text-gray-600 mb-1"><span>💻 Laptop</span><span>33.7%</span></div>
-        <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-teal rounded-full" style="width:33.7%"></div></div>
-      </div>
-      <div>
-        <div class="flex justify-between text-xs text-gray-600 mb-1"><span>💡 Iluminación</span><span>7.0%</span></div>
-        <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-yellow-400 rounded-full" style="width:7%"></div></div>
-      </div>
-      <div>
-        <div class="flex justify-between text-xs text-gray-600 mb-1"><span>🖱️ Monitor + 📡 Internet</span><span>8.0%</span></div>
-        <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-purple-400 rounded-full" style="width:8%"></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     FASES DE INVERSIÓN (INTERACTIVO)
-═══════════════════════════════════════════════════════════ -->
-<section class="max-w-5xl mx-auto px-4 mt-12">
-  <div class="divider-gradient mb-6"></div>
-  <p class="text-xs text-brand-teal uppercase tracking-widest font-semibold mb-1">Plan de Inversión Modular</p>
-  <h2 class="font-anton text-3xl text-brand-blue mb-2">FASES DE IMPLEMENTACIÓN</h2>
-  <p class="text-sm text-gray-500 mb-6">Seleccione la fase para ver el desglose detallado y el total actualizado.</p>
-
-  <!-- Selector de Fases -->
-  <div class="flex flex-wrap gap-3 mb-8">
-    <button onclick="setPhase('phase1')" id="tab-phase1" class="phase-tab active px-6 py-3 rounded-xl font-semibold text-sm border-2 border-brand-blue text-brand-blue">
-      ⚡ Fase 1 — Respaldo Eléctrico
-    </button>
-    <button onclick="setPhase('phase2')" id="tab-phase2" class="phase-tab px-6 py-3 rounded-xl font-semibold text-sm border-2 border-brand-teal text-brand-teal">
-      ☀️ Fase 2 — Autonomía Solar
-    </button>
-    <button onclick="setPhase('both')" id="tab-both" class="phase-tab px-6 py-3 rounded-xl font-semibold text-sm border-2 border-brand-green text-brand-green">
-      🚀 Proyecto Completo (F1 + F2)
-    </button>
-  </div>
-
-  <!-- Contenedor de fases -->
-  <div class="relative min-h-[400px]">
-
-    <!-- FASE 1 -->
-    <div id="phase1" class="phase-content visible-phase">
-      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div class="bg-gradient-to-r from-brand-blue to-brand-teal p-5 text-white">
-          <p class="text-xs uppercase tracking-widest opacity-80">Fase 1</p>
-          <h3 class="font-anton text-2xl">RESPALDO ELÉCTRICO CRÍTICO</h3>
-          <p class="text-sm opacity-90 mt-1">Sistema de transferencia automática · +3.5 horas continuas · LiFePO4</p>
+            <div class="bg-amber-50/60 p-5 rounded-xl border border-amber-200/70 shadow-xs md:col-span-2 flex items-start gap-4">
+                <div class="p-2 bg-amber-100 rounded-lg text-amber-700 shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-amber-800 uppercase tracking-wider mb-1">Análisis de Alerta Regional - Eje Llanero</h3>
+                    <p class="text-xs text-amber-900/80 leading-relaxed">
+                        Guanare enfrenta un esquema crítico de racionamientos eléctricos prolongados y fluctuaciones extremas de voltaje. Esta inestabilidad actúa como un destructor silencioso de hardware corporativo. La ingeniería de este sistema está diseñada no solo para proveer energía, sino para aislar y proteger sus servidores de daños catastróficos en la red pública.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="p-6 space-y-6">
 
-          <!-- Equipos -->
-          <div>
-            <p class="text-xs text-brand-blue uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-brand-blue text-white text-xs flex items-center justify-center">1</span>
-              Equipos Principales <span class="text-gray-400 font-normal">(0% Margen Comercial)</span>
-            </p>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm">
-                <thead>
-                  <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wide">
-                    <th class="text-left py-2 px-3 rounded-l-lg">Descripción</th>
-                    <th class="text-left py-2 px-3">Modelo</th>
-                    <th class="text-right py-2 px-3 rounded-r-lg">Precio</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-50">
-                  <tr class="hover:bg-blue-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">Inversor Solar 2KW 24V AC 120V</td>
-                    <td class="py-3 px-3 text-gray-400 text-xs font-mono">FL-IVCM2024-LV</td>
-                    <td class="py-3 px-3 text-right font-semibold text-brand-blue">$270.00</td>
-                  </tr>
-                  <tr class="hover:bg-blue-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">Batería de Litio LiFePO4 2.56kWh 24V</td>
-                    <td class="py-3 px-3 text-gray-400 text-xs font-mono">FLA24100</td>
-                    <td class="py-3 px-3 text-right font-semibold text-brand-blue">$520.00</td>
-                  </tr>
-                  <tr class="hover:bg-blue-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">Módulo de Comunicación WiFi</td>
-                    <td class="py-3 px-3 text-gray-400 text-xs font-mono">IOTH2403</td>
-                    <td class="py-3 px-3 text-right font-semibold text-brand-blue">$35.00</td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- DIAGNÓSTICO DE CARGA CRÍTICA -->
+        <section class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs mb-8">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center">
+                <svg class="w-4 h-4 mr-2 text-[#008276]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2a2 2 0 002-2zm0 0V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2a2 2 0 002-2z"/></svg>
+                Auditoría de Ingeniería: Consumo Técnico de Carga Crítica
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                <div class="bg-slate-50 p-3 rounded-lg text-center border border-slate-100">
+                    <p class="text-xs text-slate-500 font-medium">Servidor Físico</p>
+                    <p class="text-lg font-bold text-slate-700 mt-1">350W</p>
+                    <span class="text-[10px] text-slate-400 block">Pico de seguridad</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-lg text-center border border-slate-100">
+                    <p class="text-xs text-slate-500 font-medium">Laptop Operativa</p>
+                    <p class="text-lg font-bold text-slate-700 mt-1">230.1W</p>
+                    <span class="text-[10px] text-slate-400 block">Placa Chicony Máx.</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-lg text-center border border-slate-100">
+                    <p class="text-xs text-slate-500 font-medium">Monitor AOC</p>
+                    <p class="text-lg font-bold text-slate-700 mt-1">30W</p>
+                    <span class="text-[10px] text-slate-400 block">Eficiencia LED</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-lg text-center border border-slate-100">
+                    <p class="text-xs text-slate-500 font-medium">Red / Internet</p>
+                    <p class="text-lg font-bold text-slate-700 mt-1">24W</p>
+                    <span class="text-[10px] text-slate-400 block">Modem & Router</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-lg text-center border border-slate-100 col-span-2 sm:col-span-1">
+                    <p class="text-xs text-slate-500 font-medium">Iluminación (4x)</p>
+                    <p class="text-lg font-bold text-slate-700 mt-1">48W</p>
+                    <span class="text-[10px] text-slate-400 block">Focos LED 12W</span>
+                </div>
             </div>
-          </div>
-
-          <!-- Tablero -->
-          <div>
-            <p class="text-xs text-brand-teal uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-brand-teal text-white text-xs flex items-center justify-center">2</span>
-              Tablero de Control y Protecciones AC/DC
-            </p>
-            <div class="bg-teal-50 border border-teal-100 rounded-xl p-4">
-              <p class="text-xs text-teal-700 mb-3 font-medium">Ingeniería de detalle indispensable — Kit de materiales desglosados:</p>
-              <ul class="text-xs text-gray-600 space-y-1.5 list-none">
-                <li class="flex items-start gap-2"><span class="text-brand-teal mt-0.5">▸</span> Tablero de distribución eléctrica</li>
-                <li class="flex items-start gap-2"><span class="text-brand-teal mt-0.5">▸</span> Selector manual de 3 vías (Red / Inversor / Off)</li>
-                <li class="flex items-start gap-2"><span class="text-brand-teal mt-0.5">▸</span> Protector de voltaje digital de entrada</li>
-                <li class="flex items-start gap-2"><span class="text-brand-teal mt-0.5">▸</span> Breakers AC de protección de circuitos</li>
-                <li class="flex items-start gap-2"><span class="text-brand-teal mt-0.5">▸</span> Breaker DC exclusivo para banco de Litio</li>
-                <li class="flex items-start gap-2"><span class="text-brand-teal mt-0.5">▸</span> Cables de potencia #4 AWG y terminales de compresión</li>
-              </ul>
-              <div class="flex justify-between items-center mt-3 pt-3 border-t border-teal-200">
-                <span class="text-xs font-semibold text-teal-700">Subtotal Tablero</span>
-                <span class="font-anton text-brand-teal text-lg">$230.00</span>
-              </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center bg-slate-50/50 px-4 py-2 rounded-lg">
+                <span class="text-xs font-semibold text-slate-600">Potencia de Operación Requerida:</span>
+                <span class="text-sm font-bold text-[#0062B8]">682.1 Watts Máx.</span>
             </div>
-          </div>
+        </section>
 
-          <!-- Servicios -->
-          <div>
-            <p class="text-xs text-purple-600 uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-purple-600 text-white text-xs flex items-center justify-center">3</span>
-              Servicios de Despliegue Técnico
-            </p>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm">
-                <tbody class="divide-y divide-gray-50">
-                  <tr class="hover:bg-purple-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">🚗 Viáticos y Logística (Caracas → Guanare)</td>
-                    <td class="py-3 px-3 text-right font-semibold text-purple-600">$380.00</td>
-                  </tr>
-                  <tr class="hover:bg-purple-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">🔧 Mano de obra e Ingeniería de Detalle</td>
-                    <td class="py-3 px-3 text-right font-semibold text-purple-600">$600.00</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Total Fase 1 -->
-          <div class="bg-gradient-to-r from-brand-blue to-brand-teal rounded-2xl p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-3">
+        <!-- SELECTOR INTERACTIVO DE CONFIGURACIÓN -->
+        <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-xs mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <p class="text-xs uppercase tracking-widest opacity-80">Inversión Total</p>
-              <p class="font-semibold opacity-90">Fase 1 — Respaldo Eléctrico Crítico</p>
+                <h4 class="text-sm font-bold text-slate-700">Simulador de Inversión Comercial</h4>
+                <p class="text-xs text-slate-400">Selecciona el alcance modular de la propuesta para ajustar el presupuesto.</p>
             </div>
-            <div class="text-right">
-              <p class="font-anton text-4xl sm:text-5xl">$2,035.00</p>
-              <p class="text-xs opacity-70 mt-0.5">IVA no incluido</p>
+            <div class="flex bg-slate-100 p-1 rounded-lg border border-slate-200 w-full sm:w-auto">
+                <button id="btn-fase1" onclick="switchConfig('fase1')" class="flex-1 sm:flex-initial text-xs font-medium px-4 py-2 rounded-md transition-all duration-200 bg-white shadow-xs text-[#008276] font-semibold">
+                    Solo Fase 1 (Respaldo)
+                </button>
+                <button id="btn-completo" onclick="switchConfig('completo')" class="flex-1 sm:flex-initial text-xs font-medium px-4 py-2 rounded-md transition-all duration-200 text-slate-500 hover:text-slate-700">
+                    Sistema Completo (Fase 1 + 2)
+                </button>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- FASE 2 -->
-    <div id="phase2" class="phase-content hidden-phase">
-      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div class="bg-gradient-to-r from-brand-teal to-brand-green p-5 text-white">
-          <p class="text-xs uppercase tracking-widest opacity-80">Fase 2</p>
-          <h3 class="font-anton text-2xl">TRANSICIÓN A AUTONOMÍA SOLAR</h3>
-          <p class="text-sm opacity-90 mt-1">Independencia energética diurna · Paneles Tier-1 · MPPT integrado</p>
+        <!-- ESTRUCTURA MODULAR EN COLUMNAS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- FASE 1: TARJETA -->
+            <div id="card-fase1" class="bg-white border-2 border-[#008276] rounded-xl p-6 shadow-sm transition-all relative">
+                <span class="absolute -top-3 left-6 bg-[#008276] text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Fase Obligatoria</span>
+                <h3 class="text-base font-bold text-slate-800 mb-1 mt-1">FASE 1: Respaldo Eléctrico Inmediato</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Transferencia en milisegundos automática. Asegura más de 3.5 horas netas de autonomía en apagones continuos recargando de la red tradicional.</p>
+                
+                <div class="space-y-3">
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Inversor Solar Felicity 2KW 24V</span> <span class="text-slate-500 font-normal">$270.00</span></p>
+                        <p class="text-[10px] text-slate-400">Modelo: FL-IVCM2024-LV. MPPT 1600W integrado.</p>
+                    </div>
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Batería de Litio LiFePO4 2.56kWh</span> <span class="text-slate-500 font-normal">$520.00</span></p>
+                        <p class="text-[10px] text-slate-400">Modelo: FLA24100. 6000 ciclos profundos, BMS inteligente.</p>
+                    </div>
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Módulo Monitoreo Remoto WiFi</span> <span class="text-slate-500 font-normal">$35.00</span></p>
+                        <p class="text-[10px] text-slate-400">Modelo: IOTH2403. Gestión y analítica en tiempo real.</p>
+                    </div>
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Tablero y Protecciones de Ingeniería</span> <span class="text-slate-500 font-normal">$230.00</span></p>
+                        <p class="text-[10px] text-slate-400">Selector 3 vías, protector voltaje digital, breakers AC/DC, cables de potencia #4 AWG.</p>
+                    </div>
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Ingeniería, Despliegue y Mano de Obra</span> <span class="text-slate-500 font-normal">$600.00</span></p>
+                        <p class="text-[10px] text-slate-400">Instalación especializada y puesta a punto de transferencia.</p>
+                    </div>
+                    <div class="text-xs pb-1">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Logística y Viáticos (Ccs - Guanare)</span> <span class="text-slate-500 font-normal">$380.00</span></p>
+                        <p class="text-[10px] text-slate-400">Traslado de personal calificado, equipos pesados y 2 días en campo.</p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between bg-slate-50/70 -mx-6 -mb-6 p-6 rounded-b-xl">
+                    <span class="text-xs font-bold text-slate-600 uppercase tracking-wider">Subtotal Fase 1:</span>
+                    <span class="font-anton text-2xl text-[#008276]">$2,035.00</span>
+                </div>
+            </div>
+
+            <!-- FASE 2: TARJETA -->
+            <div id="card-fase2" class="bg-white border border-slate-200 rounded-xl p-6 shadow-xs transition-all relative opacity-60">
+                <span class="absolute -top-3 left-6 bg-slate-400 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full" id="badge-fase2">Módulo Opcional / Diferido</span>
+                <h3 class="text-base font-bold text-slate-800 mb-1 mt-1">FASE 2: Inmunidad de Autonomía Solar</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Integración de paneles fotovoltaicos. Permite la autogeneración diurna directa del sol, anulando el impacto de cortes de luz repetitivos.</p>
+                
+                <div class="space-y-3">
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>2x Paneles Solares Tier-1 550W</span> <span class="text-slate-500 font-normal">$260.00</span></p>
+                        <p class="text-[10px] text-slate-400">Células monocristalinas de alta captación llanera.</p>
+                    </div>
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Estructura de Aluminio Anodizado</span> <span class="text-slate-500 font-normal">$60.00</span></p>
+                        <p class="text-[10px] text-slate-400">Kit de anclaje de alta resistencia mecánica para techos.</p>
+                    </div>
+                    <div class="text-xs border-b border-slate-100 pb-2">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Conectores, Cable Solar DC y Tuberías</span> <span class="text-slate-500 font-normal">$60.00</span></p>
+                        <p class="text-[10px] text-slate-400">Cable fotovoltaico de 6mm y protecciones de intemperie EMT.</p>
+                    </div>
+                    <div class="text-xs pb-1">
+                        <p class="font-semibold text-slate-700 flex justify-between"><span>Anclaje Estructural y Calibración MPPT</span> <span class="text-slate-500 font-normal">$120.00</span></p>
+                        <p class="text-[10px] text-slate-400">Mano de obra preferencial integrada por instalación en paralelo.</p>
+                    </div>
+                </div>
+                <div class="mt-16 pt-4 border-t border-slate-100 flex items-center justify-between bg-slate-50/70 -mx-6 -mb-6 p-6 rounded-b-xl">
+                    <span class="text-xs font-bold text-slate-600 uppercase tracking-wider">Subtotal Fase 2:</span>
+                    <span class="font-anton text-2xl text-slate-500" id="text-price-fase2">$500.00</span>
+                </div>
+            </div>
         </div>
-        <div class="p-6 space-y-6">
 
-          <!-- Equipos Solares -->
-          <div>
-            <p class="text-xs text-brand-teal uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-brand-teal text-white text-xs flex items-center justify-center">1</span>
-              Equipos Solares <span class="text-gray-400 font-normal">(0% Margen Comercial)</span>
-            </p>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm">
-                <thead>
-                  <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wide">
-                    <th class="text-left py-2 px-3 rounded-l-lg">Descripción</th>
-                    <th class="text-right py-2 px-3 rounded-r-lg">Precio</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-50">
-                  <tr class="hover:bg-teal-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">☀️ Paneles Solares Monocristalinos Tier-1 (550W) × 2 unidades</td>
-                    <td class="py-3 px-3 text-right font-semibold text-brand-teal">$260.00</td>
-                  </tr>
-                  <tr class="hover:bg-teal-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">🏗️ Estructura de Aluminio Anodizado para techo</td>
-                    <td class="py-3 px-3 text-right font-semibold text-brand-teal">$60.00</td>
-                  </tr>
-                  <tr class="hover:bg-teal-50/40 transition-colors">
-                    <td class="py-3 px-3 font-medium text-gray-700">🔌 Conectores MC4, Cable Solar DC y Tuberías EMT</td>
-                    <td class="py-3 px-3 text-right font-semibold text-brand-teal">$60.00</td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- SECCIÓN GRAN TOTAL CENTRALIZADA -->
+        <div class="bg-gradient-to-r from-[#0062B8] to-[#008276] rounded-xl p-6 shadow-sm text-white mt-8 text-center sm:text-left sm:flex sm:items-center sm:justify-between">
+            <div class="mb-4 sm:mb-0">
+                <h3 class="text-base font-bold uppercase tracking-wider opacity-90">Inversión Total Estimada</h3>
+                <p class="text-xs opacity-75 mt-1">Garantía total de equipos Felicitysolar provista directo de fábrica con 0% de margen comercial.</p>
             </div>
-          </div>
-
-          <!-- Mano de Obra Solar -->
-          <div>
-            <p class="text-xs text-brand-green uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-brand-green text-white text-xs flex items-center justify-center">2</span>
-              Servicios de Mano de Obra Solar
-            </p>
-            <div class="bg-green-50 border border-green-100 rounded-xl p-4 flex justify-between items-center">
-              <div>
-                <p class="font-medium text-gray-700 text-sm">🔧 Instalación de paneles, anclaje estructural y comisionamiento MPPT</p>
-                <p class="text-xs text-gray-400 mt-0.5">Incluye pruebas de rendimiento y configuración del controlador</p>
-              </div>
-              <span class="font-anton text-brand-green text-2xl ml-4 flex-shrink-0">$120.00</span>
-            </div>
-          </div>
-
-          <!-- Beneficios -->
-          <div class="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-100 rounded-xl p-4">
-            <p class="text-xs text-brand-teal font-bold uppercase tracking-widest mb-3">Beneficios de la Fase 2</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <div class="flex items-start gap-2 text-xs text-gray-600"><span class="text-brand-green text-base">✓</span> Generación de 1,100W pico en horas solares</div>
-              <div class="flex items-start gap-2 text-xs text-gray-600"><span class="text-brand-green text-base">✓</span> Recarga del banco de litio en paralelo</div>
-              <div class="flex items-start gap-2 text-xs text-gray-600"><span class="text-brand-green text-base">✓</span> Ruptura de ciclos de racionamiento doble</div>
-              <div class="flex items-start gap-2 text-xs text-gray-600"><span class="text-brand-green text-base">✓</span> Independencia de Corpoelec en horario diurno</div>
-            </div>
-          </div>
-
-          <!-- Total Fase 2 -->
-          <div class="bg-gradient-to-r from-brand-teal to-brand-green rounded-2xl p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-3">
             <div>
-              <p class="text-xs uppercase tracking-widest opacity-80">Inversión Total</p>
-              <p class="font-semibold opacity-90">Fase 2 — Autonomía Solar</p>
+                <span class="block text-[10px] uppercase tracking-widest opacity-75 font-semibold">Monto Neto a Financiar</span>
+                <span id="grand-total" class="font-anton text-4xl block sm:text-5xl tracking-normal mt-1">$2,035.00</span>
             </div>
-            <div class="text-right">
-              <p class="font-anton text-4xl sm:text-5xl">$500.00</p>
-              <p class="text-xs opacity-70 mt-0.5">IVA no incluido</p>
+        </div>
+
+        <!-- IMPACTO FINANCIERO / COSTO DE LA INACCIÓN -->
+        <section class="bg-red-50/70 border border-red-200/60 p-6 rounded-xl mt-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+                <div class="max-w-xl">
+                    <h3 class="text-sm font-bold text-red-800 uppercase tracking-wider mb-1 flex items-center">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Métrica Financiera: El Costo Real de la Inacción Comercial
+                    </h3>
+                    <p class="text-xs text-red-900/80 leading-relaxed">
+                        Si decide no implementar el respaldo y promediamos apenas 3 horas diarias de inactividad operativa de su servidor y personal en Guanare (estimando un costo de paralización de \$50/hora), el impacto financiero es devastador:
+                    </p>
+                    <p class="text-xs font-bold text-red-900 mt-2 bg-red-100/50 px-3 py-1.5 rounded-lg inline-block">
+                        3h x \$50/h x 22 días laborales = \$3,300.00 mensuales en pérdidas invisibles.
+                    </p>
+                </div>
+                <div class="text-center bg-white border border-red-200 p-4 rounded-xl shadow-xs w-full sm:w-auto">
+                    <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Pérdida de Parada Mensual</span>
+                    <span class="font-anton text-3xl text-red-600 block mt-1">$3,300.00</span>
+                    <span class="text-[9px] text-slate-400 block mt-1 font-medium">¡Supera la inversión de la Fase 1!</span>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <!-- PROYECTO COMPLETO -->
-    <div id="both" class="phase-content hidden-phase">
-      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div class="btn-gradient p-5 text-white">
-          <p class="text-xs uppercase tracking-widest opacity-80">Proyecto Completo</p>
-          <h3 class="font-anton text-2xl">FASE 1 + FASE 2 — SOLUCIÓN INTEGRAL</h3>
-          <p class="text-sm opacity-90 mt-1">Respaldo inmediato + Autonomía solar · La solución definitiva</p>
-        </div>
-        <div class="p-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            <!-- Resumen F1 -->
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4">
-              <p class="text-xs text-brand-blue font-bold uppercase tracking-widest mb-2">⚡ Fase 1</p>
-              <p class="text-sm font-medium text-gray-700 mb-3">Respaldo Eléctrico Crítico</p>
-              <div class="space-y-1.5 text-xs text-gray-600">
-                <div class="flex justify-between"><span>Inversor 2KW LiFePO4</span><span class="font-semibold">$270</span></div>
-                <div class="flex justify-between"><span>Batería LiFePO4 2.56kWh</span><span class="font-semibold">$520</span></div>
-                <div class="flex justify-between"><span>Módulo WiFi</span><span class="font-semibold">$35</span></div>
-                <div class="flex justify-between"><span>Tablero AC/DC</span><span class="font-semibold">$230</span></div>
-                <div class="flex justify-between"><span>Viáticos Caracas→Guanare</span><span class="font-semibold">$380</span></div>
-                <div class="flex justify-between"><span>Mano de obra</span><span class="font-semibold">$600</span></div>
-              </div>
-              <div class="flex justify-between items-center mt-3 pt-3 border-t border-blue-200">
-                <span class="text-xs font-bold text-brand-blue">Subtotal F1</span>
-                <span class="font-anton text-brand-blue text-xl">$2,035</span>
-              </div>
-            </div>
-            <!-- Resumen F2 -->
-            <div class="bg-green-50 border border-green-100 rounded-xl p-4">
-              <p class="text-xs text-brand-green font-bold uppercase tracking-widest mb-2">☀️ Fase 2</p>
-              <p class="text-sm font-medium text-gray-700 mb-3">Autonomía Solar</p>
-              <div class="space-y-1.5 text-xs text-gray-600">
-                <div class="flex justify-between"><span>Paneles 550W × 2</span><span class="font-semibold">$260</span></div>
-                <div class="flex justify-between"><span>Estructura aluminio</span><span class="font-semibold">$60</span></div>
-                <div class="flex justify-between"><span>MC4, Cable DC, EMT</span><span class="font-semibold">$60</span></div>
-                <div class="flex justify-between"><span>Instalación + MPPT</span><span class="font-semibold">$120</span></div>
-              </div>
-              <div class="flex justify-between items-center mt-3 pt-3 border-t border-green-200">
-                <span class="text-xs font-bold text-brand-green">Subtotal F2</span>
-                <span class="font-anton text-brand-green text-xl">$500</span>
-              </div>
-            </div>
-          </div>
+        <!-- VALOR AGREGADO / RECOMENDACIÓN TÉCNICA -->
+        <footer class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs mt-8 text-xs text-slate-500 leading-relaxed">
+            <h4 class="font-bold text-slate-700 uppercase tracking-wider text-[11px] mb-2 flex items-center">
+                <svg class="w-4 h-4 mr-1 text-[#0062B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Factor Diferencial Aponwaonet & Asesoría Estratégica
+            </h4>
+            <p>
+                Nuestra propuesta traslada un ahorro radical al facturar equipos de alta gama (Litio con 6000 ciclos profundos y hasta 7 años de garantía) a estricto precio de costo mayorista. Como paso estratégico posterior para blindar la continuidad del negocio de Gustavo Rivero frente a caídas masivas de nodos de telecomunicaciones externos en Portuguesa durante apagones generalizados, recomendamos formalmente realizar una auditoría técnica complementaria para planificar la migración ordenada del Servidor Físico local hacia arquitecturas cloud (AWS / Azure).
+            </p>
+        </footer>
 
-          <!-- GRAN TOTAL -->
-          <div class="btn-gradient rounded-2xl p-6 text-white text-center shadow-lg">
-            <p class="text-xs uppercase tracking-widest opacity-80 mb-1">Inversión Total del Proyecto</p>
-            <p class="font-anton text-6xl sm:text-7xl total-animate" id="grand-total-display">$2,535.00</p>
-            <p class="text-sm opacity-80 mt-2">Fase 1 ($2,035) + Fase 2 ($500) · IVA no incluido</p>
-            <div class="mt-4 bg-white/20 rounded-xl p-3">
-              <p class="text-xs opacity-90">💡 <strong>ROI estimado:</strong> La inversión se recupera en menos de <strong>1 mes</strong> de operación continua protegida.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </main>
 
-  <!-- Totalizador dinámico flotante -->
-  <div class="mt-6 bg-white border-2 border-brand-green rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-    <div>
-      <p class="text-xs text-gray-400 uppercase tracking-widest">Selección actual</p>
-      <p class="font-semibold text-gray-700 text-sm" id="selection-label">Fase 1 — Respaldo Eléctrico Crítico</p>
-    </div>
-    <div class="text-center sm:text-right">
-      <p class="text-xs text-gray-400 uppercase tracking-widest">Total de Inversión</p>
-      <p class="font-anton text-brand-green text-4xl total-animate" id="dynamic-total">$2,035.00</p>
-    </div>
-  </div>
-</section>
+    <!-- INTERACTIVIDAD CON JAVASCRIPT -->
+    <script>
+        function switchConfig(mode) {
+            const btnFase1 = document.getElementById('btn-fase1');
+            const btnCompleto = document.getElementById('btn-completo');
+            const cardFase1 = document.getElementById('card-fase1');
+            const cardFase2 = document.getElementById('card-fase2');
+            const badgeFase2 = document.getElementById('badge-fase2');
+            const textPriceFase2 = document.getElementById('text-price-fase2');
+            const grandTotal = document.getElementById('grand-total');
 
-<!-- ═══════════════════════════════════════════════════════════
-     COSTO DE LA INACCIÓN
-═══════════════════════════════════════════════════════════ -->
-<section class="max-w-5xl mx-auto px-4 mt-12">
-  <div class="divider-gradient mb-6"></div>
-  <p class="text-xs text-red-500 uppercase tracking-widest font-semibold mb-1">Análisis de Riesgo Financiero</p>
-  <h2 class="font-anton text-3xl text-gray-800 mb-6">EL COSTO DE LA INACCIÓN</h2>
-
-  <div class="bg-red-50 border border-red-200 rounded-2xl overflow-hidden shadow-sm">
-    <div class="bg-red-600 p-4 text-white">
-      <p class="font-semibold text-sm">⚠️ Pérdida Operativa Mensual Estimada — Sin Sistema de Respaldo</p>
-    </div>
-    <div class="p-6">
-      <!-- Fórmula visual -->
-      <div class="flex flex-wrap items-center justify-center gap-3 text-center mb-6">
-        <div class="bg-white rounded-xl border border-red-100 shadow-sm p-4 min-w-[100px]">
-          <p class="font-anton text-red-500 text-3xl">3</p>
-          <p class="text-xs text-gray-500 mt-1">horas/día<br/>de corte</p>
-        </div>
-        <span class="font-anton text-gray-400 text-2xl">×</span>
-        <div class="bg-white rounded-xl border border-red-100 shadow-sm p-4 min-w-[100px]">
-          <p class="font-anton text-red-500 text-3xl">$50</p>
-          <p class="text-xs text-gray-500 mt-1">pérdida<br/>por hora</p>
-        </div>
-        <span class="font-anton text-gray-400 text-2xl">×</span>
-        <div class="bg-white rounded-xl border border-red-100 shadow-sm p-4 min-w-[100px]">
-          <p class="font-anton text-red-500 text-3xl">22</p>
-          <p class="text-xs text-gray-500 mt-1">días<br/>laborales</p>
-        </div>
-        <span class="font-anton text-gray-400 text-2xl">=</span>
-        <div class="bg-red-600 rounded-xl shadow-md p-4 min-w-[130px]">
-          <p class="font-anton text-white text-4xl">$3,300</p>
-          <p class="text-xs text-red-100 mt-1">pérdida<br/>mensual</p>
-        </div>
-      </div>
-
-      <!-- Alerta de impacto -->
-      <div class="bg-white border-2 border-red-400 rounded-xl p-5 text-center">
-        <p class="text-sm text-gray-600 mb-2">En un solo mes de inacción, usted pierde:</p>
-        <p class="font-anton text-5xl text-red-600">$3,300.00</p>
-        <div class="mt-4 bg-red-50 rounded-lg p-3">
-          <p class="text-sm font-semibold text-red-700">
-            🚨 El costo de la inacción en <span class="underline">un solo mes</span> supera en <span class="font-anton text-lg">62%</span> el valor total de la inversión de la Fase 1.
-          </p>
-        </div>
-      </div>
-
-      <!-- Comparativa -->
-      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-red-100 rounded-xl p-4 text-center border border-red-200">
-          <p class="text-xs text-red-600 uppercase tracking-widest font-semibold mb-1">Sin protección (1 mes)</p>
-          <p class="font-anton text-red-600 text-4xl">$3,300</p>
-          <p class="text-xs text-red-500 mt-1">Pérdida operativa irrecuperable</p>
-        </div>
-        <div class="bg-green-100 rounded-xl p-4 text-center border border-green-200">
-          <p class="text-xs text-brand-green uppercase tracking-widest font-semibold mb-1">Con Fase 1 instalada</p>
-          <p class="font-anton text-brand-green text-4xl">$2,035</p>
-          <p class="text-xs text-green-600 mt-1">Inversión única · Protección permanente</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     CONCLUSIÓN Y ASESORÍA CONSULTIVA
-═══════════════════════════════════════════════════════════ -->
-<section class="max-w-5xl mx-auto px-4 mt-12 mb-12">
-  <div class="divider-gradient mb-6"></div>
-  <p class="text-xs text-brand-teal uppercase tracking-widest font-semibold mb-1">Asesoría Consultiva</p>
-  <h2 class="font-anton text-3xl text-brand-blue mb-6">COMPROMISO TÉCNICO Y VISIÓN ESTRATÉGICA</h2>
-
-  <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-6">
-    <!-- Compromiso -->
-    <div class="flex gap-4 items-start">
-      <div class="w-12 h-12 rounded-xl btn-gradient flex items-center justify-center text-white text-xl flex-shrink-0">🛡️</div>
-      <div>
-        <h3 class="font-semibold text-gray-800 mb-1">Compromiso de Ingeniería Aponwaonet</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Cada solución que diseñamos parte de un análisis real de carga, contexto regional y proyección de crecimiento. No vendemos equipos: <strong>entregamos continuidad operativa</strong>. El sistema propuesto ha sido dimensionado con tolerancias de seguridad del 15% sobre la carga máxima calculada, garantizando estabilidad incluso ante picos de arranque simultáneos.
-        </p>
-      </div>
-    </div>
-
-    <hr class="border-gray-100"/>
-
-    <!-- Recomendación Cloud -->
-    <div class="flex gap-4 items-start">
-      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-blue to-purple-600 flex items-center justify-center text-white text-xl flex-shrink-0">☁️</div>
-      <div>
-        <h3 class="font-semibold text-gray-800 mb-1">Recomendación Estratégica: Auditoría del Servidor Local</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Como parte de nuestra asesoría integral, recomendamos programar una <strong>auditoría técnica del servidor físico local</strong> actualmente en operación. El objetivo es evaluar la viabilidad de una <strong>migración progresiva a infraestructura en la nube (AWS / Azure)</strong>, lo que permitiría:
-        </p>
-        <ul class="mt-3 space-y-2 text-sm text-gray-600">
-          <li class="flex items-start gap-2"><span class="text-brand-green text-base mt-0.5">✓</span> Eliminar la dependencia de hardware físico local ante cortes prolongados de telecomunicaciones en la región.</li>
-          <li class="flex items-start gap-2"><span class="text-brand-green text-base mt-0.5">✓</span> Garantizar alta disponibilidad de datos y aplicaciones críticas desde cualquier punto de conectividad.</li>
-          <li class="flex items-start gap-2"><span class="text-brand-green text-base mt-0.5">✓</span> Reducir el riesgo de pérdida de información ante fallas eléctricas severas o eventos de sobretensión.</li>
-          <li class="flex items-start gap-2"><span class="text-brand-green text-base mt-0.5">✓</span> Escalar la infraestructura tecnológica sin inversión adicional en hardware físico.</li>
-        </ul>
-        <div class="mt-4 bg-blue-50 border border-blue-100 rounded-xl p-3">
-          <p class="text-xs text-brand-blue font-medium">
-            💡 Esta migración, combinada con el sistema de respaldo eléctrico propuesto, representa la arquitectura de continuidad operativa más robusta disponible para su operación en el eje llanero.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <hr class="border-gray-100"/>
-
-    <!-- CTA -->
-    <div class="text-center">
-      <p class="text-sm text-gray-500 mb-4">¿Listo para proteger su operación? Contáctenos para coordinar la instalación.</p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <button class="btn-gradient text-white font-semibold px-8 py-3 rounded-xl text-sm shadow-md">
-          ✅ Aprobar Propuesta
-        </button>
-        <button class="border-2 border-brand-blue text-brand-blue font-semibold px-8 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors">
-          📞 Solicitar Reunión Técnica
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════════ -->
-<footer class="bg-gray-900 text-white py-8 px-4">
-  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="text-center sm:text-left">
-      <p class="font-anton text-xl text-brand-teal">APONWAONET C.A.</p>
-      <p class="text-xs text-gray-400 mt-0.5">Rif: J500109660 · Soluciones de Energía e Infraestructura Tecnológica</p>
-    </div>
-    <div class="text-center sm:text-right text-xs text-gray-500">
-      <p>Propuesta válida por 15 días calendario</p>
-      <p class="mt-0.5">© 2025 Aponwaonet C.A. · Todos los derechos reservados</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════════════════ -->
-<script>
-  // Fecha del documento
-  const today = new Date();
-  document.getElementById('doc-date').textContent = today.toLocaleDateString('es-VE', {
-    day: '2-digit', month: 'long', year: 'numeric'
-  });
-
-  // Datos de fases
-  const phases = {
-    phase1: { label: 'Fase 1 — Respaldo Eléctrico Crítico', total: '$2,035.00' },
-    phase2: { label: 'Fase 2 — Autonomía Solar', total: '$500.00' },
-    both:   { label: 'Proyecto Completo (Fase 1 + Fase 2)', total: '$2,535.00' }
-  };
-
-  let currentPhase = 'phase1';
-
-  function setPhase(phase) {
-    if (phase === currentPhase) return;
-
-    // Ocultar actual
-    const current = document.getElementById(currentPhase);
-    current.classList.remove('visible-phase');
-    current.classList.add('hidden-phase');
-
-    // Mostrar nuevo
-    const next = document.getElementById(phase);
-    next.classList.remove('hidden-phase');
-    next.classList.add('visible-phase');
-
-    // Actualizar tabs
-    document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + phase).classList.add('active');
-
-    // Actualizar totalizador
-    const totalEl = document.getElementById('dynamic-total');
-    const labelEl = document.getElementById('selection-label');
-
-    totalEl.style.opacity = '0';
-    totalEl.style.transform = 'scale(0.8)';
-
-    setTimeout(() => {
-      totalEl.textContent = phases[phase].total;
-      labelEl.textContent = phases[phase].label;
-      totalEl.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
-      totalEl.style.opacity = '1';
-      totalEl.style.transform = 'scale(1)';
-    }, 180);
-
-    currentPhase = phase;
-  }
-
-  // Inicializar estilos del totalizador
-  const totalEl = document.getElementById('dynamic-total');
-  totalEl.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
-</script>
+            if (mode === 'fase1') {
+                // Activar botón Fase 1
+                btnFase1.className = "flex-1 sm:flex-initial text-xs font-medium px-4 py-2 rounded-md transition-all duration-200 bg-white shadow-xs text-[#008276] font-semibold";
+                btnCompleto.className = "flex-1 sm:flex-initial text-xs font-medium px-4 py-2 rounded-md transition-all duration-200 text-slate-500 hover:text-slate-700";
+                
+                // Estilos Tarjetas
+                cardFase1.className = "bg-white border-2 border-[#008276] rounded-xl p-6 shadow-sm transition-all relative";
+                cardFase2.className = "bg-white border border-slate-200 rounded-xl p-6 shadow-xs transition-all relative opacity-60";
+                
+                // Modificaciones de texto internos
+                badgeFase2.className = "absolute -top-3 left-6 bg-slate-400 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full";
+                badgeFase2.innerText = "Módulo Opcional / Diferido";
+                textPriceFase2.className = "font-anton text-2xl text-slate-500";
+                
+                // Cambiar el Total en pantalla
+                grandTotal.innerText = "$2,035.00";
+            } else if (mode === 'completo') {
+                // Activar botón de Completo
+                btnCompleto.className = "flex-1 sm:flex-initial text-xs font-medium px-4 py-2 rounded-md transition-all duration-200 bg-white shadow-xs text-[#008276] font-semibold";
+                btnFase1.className = "flex-1 sm:flex-initial text-xs font-medium px-4 py-2 rounded-md transition-all duration-200 text-slate-500 hover:text-slate-700";
+                
+                // Estilos Tarjetas
+                cardFase1.className = "bg-white border border-slate-200 rounded-xl p-6 shadow-xs transition-all relative";
+                cardFase2.className = "bg-white border-2 border-[#00A336] rounded-xl p-6 shadow-sm transition-all relative";
+                
+                // Modificaciones de texto internos
+                badgeFase2.className = "absolute -top-3 left-6 bg-[#00A336] text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full";
+                badgeFase2.innerText = "Fase 2 Activa";
+                textPriceFase2.className = "font-anton text-2xl text-[#00A336]";
+                
+                // Cambiar el Total en pantalla
+                grandTotal.innerText = "$2,535.00";
+            }
+        }
+    </script>
 </body>
 </html>
